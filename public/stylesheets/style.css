@@ -1,0 +1,65 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: black; }
+
+.navhomepage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 90px;
+  background: black;
+  background: linear-gradient(0deg, black 0%, #3b3b3a 100%);
+  font-family: Arial, Helvetica, sans-serif;
+  border-bottom: darkgray;
+  border-bottom-width: 1px;
+  border-bottom-style: solid; }
+
+.navhomepage ul li {
+  display: inline;
+  padding-right: 0px;
+  color: #870007;
+  font-size: small;
+  padding-right: 10px;
+  font-weight: 400; }
+
+.navhomepage h2 {
+  font-family: 'Oleo Script', cursive;
+  font-size: 35px;
+  color: #870007;
+  padding-left: 10px;
+  font-weight: lighter;
+  border: 10; }
+
+.divhomepage {
+  background-image: url("../images/image0.jpeg");
+  background-position: center;
+  background-size: cover;
+  height: 300px; }
+
+.divhomepage p {
+  width: 300px;
+  font-size: 27px;
+  font-weight: normal;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 25px;
+  color: white;
+  font-family: 'Oleo Script', cursive; }
+
+#test-button {
+  font-size: 15px;
+  background-color: #870007;
+  color: #fff;
+  padding: 20px 40px;
+  border: 20;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  margin-left: 110px;
+  font-family: 'Oleo Script', cursive; }
+
+/*# sourceMappingURL=style.css.map */

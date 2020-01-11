@@ -8,12 +8,12 @@ const movieSchema = new Schema(
     Rated:String,
     Released: Date,
     Runtime: String,
-    Genre: String, // a tester si pertinant car plusieurs genres cine
+    Genre: [String], 
     Director: String,
     Writer:String,
     Actors:String,
     Plot:String,
-    Language:String, // a tster si pertinant car plusieurs languages
+    Language:String,
     Country: String,
     Awards:String,
     Poster:{ type:String, default: 'https://www.sciencesetavenir.fr/assets/img/2016/03/09/cover-r4x3w1000-57df40df2241f-les-signes-de-la-douleur-chez-le-chat.jpg'},
