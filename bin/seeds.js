@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const movies = require('../models/movies');
+const Movie = require('../models/movies');
 const dbname = 'movies';
 mongoose.connect(`mongodb://localhost/${dbname}`);
 
@@ -3110,7 +3110,7 @@ const movieList = [
     ]
 
 
-    movies.create(movieList)
+    Movie.create(movieList)
       .then(movieList => {
         console.log('Les films ont été crées');
         mongoose.connection.close();
