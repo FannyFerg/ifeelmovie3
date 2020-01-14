@@ -1,0 +1,17 @@
+<div id="moviespage">
+  <h1>iFeelMovie</h1>
+  <p>D'après ton mood voila ce qu'on te propose </p>
+
+  <ul>
+    {{#each movies}}
+    <li class="movie">
+      <img src="{{image}}">
+      {{title}}
+      <p>
+        <a href="/movies/{{id}}">see more</a>
+      </p>
+    </li>
+    {{/each}}
+  </ul>
+</div>
+{{!-- partie serie --}}
