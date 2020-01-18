@@ -1,24 +1,26 @@
-<div id="moviepage">
-  <img src="{{movie.Poster}}">
-  <div class="details">
-    <p>
-      <a href="/movies">Go back</a>
-    </p>
-
-    <h1>{{movie.Title}}</h1>
-    <h2>Director: {{movie.Director}}</h2>
-    
-    <p>Rated:</p>
+ <nav class="navhomepage"> 
+    <h2>iFeelMovie</h2>
     <ul>
-      {{#each movie.Rated}}
-      <li>{{this}}</li>
-      {{/each}}
+      <li>Teste ici</li>
+      <li><a href="/signup">sign up</a> </li>
+      <li> <a href="/">Home</a> </li>
     </ul>
+ </nav>
 
-    <p>{{movie.Plot}}</p>
+<div id="moviespage">
+  
+  <h1>D'après ton mood voila ce qu'on te propose </h1>
 
-    {{#each movie.Runtime}}
-    {{this}}
+  <ul>
+    {{#each movie}}
+    <li class="movie">
+      <img src="{{Poster}}">
+      {{Title}}
+      <p>
+        <a href="/movies/{{id}}">see more</a>
+      </p>
+    </li>
     {{/each}}
-  </div>
+  </ul>
 </div>
+{{!-- partie serie --}}

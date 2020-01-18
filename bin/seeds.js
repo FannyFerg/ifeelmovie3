@@ -3112,7 +3112,7 @@ const movieList = [
 
     Movie.create(movieList)
       .then(movieList => {
-        console.log('Les films ont été crées');
+        console.log('Les ' + movieList.length + ' films ont été crées');
         mongoose.connection.close();
     
 

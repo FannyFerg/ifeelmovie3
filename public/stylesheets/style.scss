@@ -1,8 +1,18 @@
+*, :before, :after {box-sizing:border-box;}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
-  padding: 0;
   background: rgb(0,0,0);
+}
+
+.error-message {
+  background: #870007;
+  box-sizing: border-box;
+  color: #fff;
+  margin: 20px auto;
+  padding: 20px;
+  width: 100%;
 }
 
 .navhomepage {
@@ -38,13 +48,14 @@ font-weight: 400;
   border:10;
 }
 
-  .divhomepage{
+  .homepage{
+  overflow:hidden;
+  min-height:100vh;
   background-image: url("../images/image0.jpeg");
-  background-position: center;
   background-size: cover;
   height: 300px;
   }
-  .divhomepage p{
+  .homepage p{
   width: 300px;
   font-size: 27px;
   font-weight:normal;
@@ -56,18 +67,25 @@ font-weight: 400;
   font-family: 'Oleo Script', cursive;
   }
 
-  #test-button{
-    font-size: 15px;
-    background-color: #870007;
-    color: #fff;
-    padding: 20px 40px;
-    border: 20;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    margin-left: 110px;
+  .btn {
+    display:inline-block;
+    padding:1em;
+    background:#870007;
+    border-radius:5px;
+    border:3px solid;
     font-family: 'Oleo Script', cursive;
-  }
+    color:black;
+    border-color: black;
+    box-sizing: border-box;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: .3s ease background;
+    cursor: pointer;
+    display: inline-block;
 
+   }
+  
+  
   #form {
     margin: 30px auto;
     width: 380px;
@@ -103,11 +121,18 @@ font-weight: 400;
     text-decoration: none;
     text-transform: uppercase;
     transition: .3s ease background;
-    width: 100%;
+  
   }
   
   #form button:hover {
     background: #fff;
     color: #870007;
     transition: .3s ease background;
+  }
+  /*MoviesLIST----------------------------------------*/
+
+  #moviespage {
+    text-align:center;
+    color: white;
+    font-family: 'Oleo Script', cursive;
   }
