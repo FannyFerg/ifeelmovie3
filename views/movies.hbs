@@ -11,16 +11,17 @@
   
   <h1>D'après ton mood voila ce qu'on te propose </h1>
 
-  <ul>
-    {{#each movie}}
+  
+    {{#each movies}}
+    <ul>
     <li class="movie">
-      <img src="{{Poster}}">
-      {{Title}}
+      <img src="{{this.Poster}}">
+      <h4>{{this.Title}}</h4>
       <p>
-        <a href="/movies/{{id}}">see more</a>
+        <a href="/movies/{{this.id}}">see more</a>
       </p>
     </li>
+     </ul>
     {{/each}}
-  </ul>
+
 </div>
-{{!-- partie serie --}}

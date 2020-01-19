@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Movie = require('../models/movies');
-const dbname = 'iFeelMovie';
+const dbname = 'ifeelmovie';
 mongoose.connect(`mongodb://localhost/${dbname}`);
 
 const movieList = [
@@ -3114,10 +3114,8 @@ const movieList = [
       .then(movieList => {
         console.log('Les ' + movieList.length + ' films ont été crées');
         mongoose.connection.close();
-    
-
       })
-
       .catch(error => {
+        console.log(error);
         console.log("t'as merdé");
       })

@@ -15,12 +15,13 @@
       <a href="/movies">Go back</a>
     </p>
 
-    <h1>{{this.Title}}</h1>
-    <h2>Director: {{this.Director}}</h2>
+    <h1>{{movie.Title}}</h1>
+    <h2>Director: {{movie.Director}}</h2>
     
-    <h2>Rated: {{this.Rated}} </h2>
+    <p>Rated: {{movie.Rated}}</p>
     <ul>
-      <li>{{this}}</li> 
+      {{#each movie.Rated}}
+      <li>{{this}}</li>
       {{/each}}
     </ul>
 

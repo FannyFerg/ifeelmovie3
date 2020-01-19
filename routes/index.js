@@ -13,13 +13,22 @@ router.get("/login", (req, res, next) => {
 
 
 router.get('/movies', (req, res, next) => {
-  Movie.find()
+  const mood = req.query.mood; // sad
+
+  const filters = {
+    heartbroken: {Genre: { $nin: ["Romance"] }},
+    sad: {Genre: { $nin: ["Drama"] } },
+    happy: {}
+  } 
+
+
+  Movie.find(filters[mood])
+    .limit(5)
     .then(movies => {
-      console.log('Movies list: ', movies);
+      console.log('Movies list:', movies);
       res.render('movies', {movies});
     })
-    .catch(next)
-  ;
+    .catch(next);
 });
 
 router.use((req, res, next) => {
@@ -35,13 +44,18 @@ router.get("/secret", (req, res, next) => {
   res.render("secret");
 });
 
-// router.get('/movies/:id', (req, res, next) => {
-//   const id = req.params.id;
+router.get("/test", (req, res, next) => {
+  res.render("Test");
+});
 
-//   Movie.findById(id)
-//     .then(movie => {
-//       res.render('movie', {movie: movie});
-// })
-// });
+
+router.get('/movies/:id', (req, res, next) => {
+  const id = req.params.id;
+
+  Movie.findById(id)
+    .then(movie => {
+      res.render('movie', {movie: movie}); //  des données a cette object 
+    }).catch(next)
+})
 
 module.exports = router;
