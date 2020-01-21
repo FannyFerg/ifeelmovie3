@@ -1,5 +1,5 @@
 require('dotenv').config({
-  path: require('path').resolve(__dirname, '../..env')
+  path: require('path').resolve(__dirname, '../.env')
 });
 
 const mongoose = require('mongoose');
@@ -3114,7 +3114,8 @@ const movieList = [
     ]
 
 
-    Movie.create(movieList)
+    Movie.remove().then(() => {
+      Movie.create(movieList)
       .then(movieList => {
         console.log('Les ' + movieList.length + ' films ont été crées');
         mongoose.connection.close();
@@ -3123,3 +3124,8 @@ const movieList = [
         console.log(error);
         console.log("t'as merdé");
       })
+    }).catch(error => {
+      console.log(error);
+      console.log("t'as merdé");
+    })
+    
