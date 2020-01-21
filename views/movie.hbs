@@ -17,8 +17,13 @@
 
     <h1>{{movie.Title}}</h1>
     <h2>Director: {{movie.Director}}</h2>
-    
+    <img src="{{movie.Poster}}">
+
     <p>Rated: {{movie.Rated}}</p>
+
+    <p>Duration : {{movie.Runtime}}</p>
+
+    <p>Awards : {{movie.Awards}}</p>
     <ul>
       {{#each movie.Rated}}
       <li>{{this}}</li>
