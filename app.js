@@ -70,10 +70,3 @@ module.exports = app;
 
 const router = require('./routes/auth');
 app.use('/', router);
-
-
-/*
-n(x => {
-    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
-});
-*/

@@ -2,7 +2,6 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
   background: rgb(0,0,0);
 }
 
@@ -33,16 +32,15 @@ body {
 .navhomepage ul li{
 display: inline;
 padding-right:0px;
-color: #870007;
+color: whitesmoke;
 font-size: small;
 padding-right: 10px;
 font-weight: 400;
 }
 .navhomepage h2{
-  // font-family: 'Pacifico', cursive;
-  font-family: 'Oleo Script', cursive;
+  font-family: 'Radley', serif;;
   font-size: 35px;
-  color: #870007;
+  color:whitesmoke;
   padding-left: 10px;
   font-weight: lighter;
   border:10;
@@ -50,13 +48,15 @@ font-weight: 400;
 
   .homepage{
   overflow:hidden;
-  min-height:100vh;
-  background-image: url("../images/image0.jpeg");
+  min-height:70vh;
+  background-image: url("../images/Contenuhomep.jpeg");
   background-size: cover;
-  height: 300px;
+  display:flex;
+  flex-direction: column
+  
   }
   .homepage p{
-  width: 300px;
+  width: 500px;
   font-size: 27px;
   font-weight:normal;
   text-align:center;
@@ -64,27 +64,33 @@ font-weight: 400;
   margin-right: auto;
   padding-top: 25px;
   color:white;
-  font-family: 'Oleo Script', cursive;
+  font-family: 'Radley', serif;
+  }
+  .btnlogin{
+    justify-content: center;
+    display: flex;
   }
 
   .btn {
-    display:inline-block;
-    padding:1em;
-    background:#870007;
-    border-radius:5px;
-    border:3px solid;
-    font-family: 'Oleo Script', cursive;
-    color:white;
-    border-color:white;
-    box-sizing: border-box;
+
+    background: #870007;
+    border: 1px solid #870007;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 20px;
+    padding: 8px 16px;
     text-decoration: none;
     text-transform: uppercase;
     transition: .3s ease background;
-    cursor: pointer;
-    display: inline-block;
-
+   
    }
-  
+  .btn:hover{
+    background: #fff;
+    color: #870007;
+    transition: .3s ease background;
+  }
   
   #form {
     margin: 30px auto;
@@ -165,11 +171,11 @@ font-weight: 400;
     background:$bg;
     font-family:'Montserrat',sans-serif;
     color:#fff;
-    padding:4% 0;
-    width:80%;
-    max-width:84em;
-    margin:0 auto;
-    overflow-x:hidden;
+    // padding:4% 0;
+    // width:80%;
+    // max-width:84em;
+    // margin:0 auto;
+    // overflow-x:hidden;
   }
   
   section {
@@ -326,7 +332,7 @@ font-weight: 400;
   
   @media (max-width:1050px) {
     body {
-      width:98%;
+      // width:98%;
     }
     section {
       min-height:6em;
@@ -365,7 +371,7 @@ font-weight: 400;
     a.submit,.note {font-size:0.8em;}
   }
   
-  body::-webkit-scrollbar {background:$bg;width:6px;}
-  body::-webkit-scrollbar-track {background:rgba(255,255,255,0.1);border-radius:4px;margin:16px;}
-  body::-webkit-scrollbar-thumb {background:rgba(255,255,255,0.3);border-radius:4px;}
+  // body::-webkit-scrollbar {background:$bg;width:6px;}
+  // body::-webkit-scrollbar-track {background:rgba(255,255,255,0.1);border-radius:4px;margin:16px;}
+  // body::-webkit-scrollbar-thumb {background:rgba(255,255,255,0.3);border-radius:4px;}
                                               
