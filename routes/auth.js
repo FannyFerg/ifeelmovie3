@@ -4,7 +4,7 @@ const router = express.Router();
 const User = require("../models/user");
 
 // BCrypt to encrypt passwords
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcryptjs');
 const bcryptSalt = 10;
 
 router.get("/signup", (req, res, next) => {
@@ -70,7 +70,7 @@ User.findOne({ "username": username })
       password: hashPass
     })
     .then(() => {
-      res.redirect("/");
+      res.redirect("/secret");
     })
     .catch(error => {
       console.log(error);
