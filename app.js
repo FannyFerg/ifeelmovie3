@@ -14,7 +14,7 @@ const bcrypt = require('bcryptjs');
 
 
 
-  mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true})
+  mongoose.connect('mongodb://localhost/ifeelMovie', {useNewUrlParser: true})
     .then(x => {
       console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
     })
@@ -57,19 +57,15 @@ app.use(session({
   })
 }));
 
-app.use('/', require('./routes/auth'));
-app.use('/', require('./routes/index'));
-
-
-
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
 
 
 
-const index = require('./routes/index');
-app.use('/', index);
-module.exports = app;
+const siteroutes = require('./routes/siteroutes');
+app.use('/', siteroutes);
 
 const router = require('./routes/auth');
-app.use('/', router);
+app.use('/auth', router);
+
+module.exports = app;

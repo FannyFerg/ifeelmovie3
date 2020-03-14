@@ -2,133 +2,73 @@ const express = require("express");
 const router = express.Router();
 // User model
 const User = require("../models/user");
-
 // BCrypt to encrypt passwords
 const bcrypt = require('bcryptjs');
 const bcryptSalt = 10;
 
-router.get("/signup", (req, res, next) => {
-  res.render("auth/signup");
-});
+
 
 router.post("/signup", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
-  
-  if (username === "") {
-    res.render("auth/signup", {
-      errorMessage: "Indiquer un nom d'utilisateur pour vous inscrire"
-    });
+  const email = req.body.email;
+
+  if (!username || !password || !email) {
+    res.status(400).json({message: "indiquez un username un password et un email"});
     return;
   }
 
-    
-  else if (password === "") {
-    res.render("auth/signup", {
-      errorMessage: "Indiquez un mot de passe pour vous inscrire"
+  User.findOne({ username }, "username", (err, user) => {
+    if (user !== null) {
+      res.status(400).json({ message: "cet username existe deja" });
+      return;
+    }
+
+    const salt = bcrypt.genSaltSync(bcryptSalt);
+    const hashPass = bcrypt.hashSync(password, salt);
+
+    const newUser = new User({
+      username,
+      password: hashPass
     });
+    
+    newUser.save()
+    .then(() => {
+      res.json({message:"user created"});
+    })
+    .catch(err => {
+      res.json({ message: "Something went wrong" });
+    })
+  });
+
+});
+
+
+router.post("/login", (req, res, next) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  if ( !username|| !password) {
+    res.json({message: " entrer un username et un password"});
     return;
   }
 
   User.findOne({ "username": username })
-    .then(user => {
-      if (user) {
-        res.render("auth/signup", {
-          errorMessage: "The username already exists!"
-        });
-        return; // ✋STOP
-      }
-
-
-  // Let's hash the password
-  const salt     = bcrypt.genSaltSync(bcryptSalt);
-  const hashPass = bcrypt.hashSync(password, salt);
-
-  User.create({
-    username,
-    password: hashPass // 👈 store the hashed version
-  })
-    .then(() => {
-      res.redirect("/");
-    })
-    .catch(err => next(err))
-});
-User.findOne({ "username": username })
-.then(user => {
-  if (user !== null) {
-      res.render("auth/signup", {
-        errorMessage: "The username already exists!"
-      });
-      return;
-    }
-
-    const salt     = bcrypt.genSaltSync(bcryptSalt);
-    const hashPass = bcrypt.hashSync(password, salt);
-
-    User.create({
-      username,
-      password: hashPass
-    })
-    .then(() => {
-      res.redirect("/secret");
-    })
-    .catch(error => {
-      console.log(error);
-    })
-})
-.catch(error => {
-  next(error);
-})
-
-  .catch(error => {
-    next(error);
-  })
-}
-)
-
-router.get("/login", (req, res, next) => {
-  res.render("auth/login");
-});
-
-router.post("/login", (req, res, next) => {
-  const theUsername = req.body.username;
-  const thePassword = req.body.password;
-
-  if (theUsername === "" || thePassword === "") {
-    res.render("auth/login", {
-      errorMessage: "Please enter both, username and password to sign up."
-    });
-    return;
-  }
-
-  User.findOne({ "username": theUsername })
   .then(user => {
       if (!user) {
-        res.render("auth/login", {
-          errorMessage: "The username doesn't exist."
-        });
+        res.json({message: "cet username nexiste pas"});
         return;
       }
-      if (bcrypt.compareSync(thePassword, user.password)) {
+      if (bcrypt.compareSync(password, user.password)) {
         // Save the login in the session!
-        req.session.currentUser = user;
-        res.redirect("/secret");
+       res.json({message:"connecte"})
       } else {
-        res.render("auth/login", {
-          errorMessage: "Incorrect password"
-        });
+        res.json({message: "mauvais mot de passe"});
       }
   })
   .catch(error => {
     next(error);
   })
-});
-
-router.get("/logout", (req, res, next) => {
-  req.session.destroy((err) => {
-    // cannot access session here
-    res.redirect("/login");
-  });
 });
 
 
